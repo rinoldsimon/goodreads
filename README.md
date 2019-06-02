@@ -1,6 +1,8 @@
 # goodreads
 
-A simple Ember.js application which we can search for books and list them from goodreads.
+A simple Ember.js application where we can search for books and list them from goodreads.
+
+[DEMO](https://ember-goodreads.herokuapp.com/) 
 
 ## Prerequisites
 
