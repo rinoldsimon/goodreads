@@ -1,0 +1,40 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {{#if canStepBackward}}
+      <li class="page-item">
+        <a class="page-link" href="#" {{action "incrementPage" -1}}>&laquo;</a>
+      </li>
+    {{else}}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" {{action "incrementPage" -1}}>&laquo;</a>
+      </li>
+    {{/if}}
+
+    {{#each pageItems as |item|}}
+      {{#if item.dots}}
+        <li class="disabled">
+          <a href="#">...</a>
+        </li>
+      {{/if}}
+      {{#if item.current}}
+        <li class="active page-item">
+          <a href="#" class="page-link">{{item.page}}</a>
+        </li>
+      {{else}}
+        <li class="page-item">
+          <a href="#" class="page-link" {{action "pageClicked" item.page}}>{{item.page}}</a>
+        </li>
+      {{/if}}
+    {{/each}}
+
+    {{#if canStepForward}}
+      <li class="page-item">
+        <a href="#" class="page-link" {{action "incrementPage" 1}}>&raquo;</a>
+      </li>
+    {{else}}
+      <li class="page-item disabled">
+        <a href="#" class="page-link" {{action "incrementPage" 1}}>&raquo;</a>
+      </li>
+    {{/if}}
+  </ul>
+</nav>
