@@ -2,7 +2,7 @@
 
 A simple Ember.js application where we can search for books and list them from goodreads.
 
-[DEMO](https://ember-goodreads.herokuapp.com/) 
+[DEMO](https://ember-goodreads.herokuapp.com/)
 
 ## Prerequisites
 
@@ -23,6 +23,12 @@ You will need the following things properly installed on your computer.
 
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+
+## Running Tests
+
+* `ember test`
+* `ember test --server`
 
 ## Further Reading / Useful Links
 
