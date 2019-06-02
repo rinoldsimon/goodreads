@@ -11,10 +11,55 @@
             {{input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search books from Goodreads by name" value=searchTerm required=true}}
           </div>
           <div class="col-auto">
-            <button class="btn btn-lg btn-success" type="submit">Search</button>
+
+            {{#if searching}}
+              <button class="btn btn-lg btn-success" type="submit" disabled="">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Searching...
+              </button>
+            {{else}}
+              <button class="btn btn-lg btn-success" type="submit">Search</button>
+            {{/if}}
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+{{#unless initialLoad}}
+  {{#if pagedContent}}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Published</th>
+          <th scope="colsear">Rating</th>
+          <th scope="col">Reviews</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each pagedContent as |book|}}
+          <tr>
+            <td><a href="https://www.goodreads.com/book/show/{{book.best_book.id}}" target="_blank" rel="noopener">{{book.best_book.title}}</a></td>
+            <td>{{book.best_book.author.name}}</td>
+            <td>
+              {{#if book.original_publication_year}}
+                {{book.original_publication_year}}
+              {{else}}
+                <i>nil</i>
+              {{/if}}
+            </td>
+            <td>{{book.average_rating}}</td>
+            <td>{{book.text_reviews_count}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{page-numbers content=pagedContent showFL=true}}
+  {{else}}
+    <p class="text-center">No Results Found for <i>{{searchTermCopy}}</i></p>
+  {{/if}}
+{{/unless}}
