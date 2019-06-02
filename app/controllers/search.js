@@ -92,11 +92,13 @@ export default Controller.extend({
           this.set('searchTermCopy', searchTerm);
           this.set('searching', false);
           let data = jsonData.GoodreadsResponse.search.results.work;
-          data.forEach((data) => {
-            if (data.original_publication_year["@attributes"]) {
-              data.original_publication_year = ''
-            }
-          });
+          if (data) {
+            data.forEach((data) => {
+              if (data.original_publication_year["@attributes"]) {
+                data.original_publication_year = ''
+              }
+            });
+          }
           this.set('content', data);
         })
       });
