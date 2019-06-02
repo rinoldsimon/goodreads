@@ -24,7 +24,7 @@ module.exports = function(environment) {
   };
 
   // goodreads developer api key
-  ENV.api_key = 'MoUtTPnKngyFRU8JmpMw'
+  ENV.api_key = 'ujQpPiC7bLa8xD7WAUUw'
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
